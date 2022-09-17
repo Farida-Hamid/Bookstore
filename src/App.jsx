@@ -1,11 +1,23 @@
-import React from 'react';
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+import Library from './components/Library';
+import Categories from './components/Categories';
+import Header from './components/Header';
 import './App.css';
 
 function App() {
   return (
-    <p>
-      Cleanedup React App
-    </p>
+    <>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Library />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 
