@@ -5,6 +5,7 @@ import {
 import Library from './components/Library';
 import Categories from './components/Categories';
 import Header from './components/Header';
+import './App.css';
 
 function App() {
   return (
