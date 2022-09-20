@@ -10,6 +10,36 @@ const AddBook = () => {
     author: '',
   });
 
+  const read = (e) => {
+    const input = e.target;
+    setState({
+      ...state,
+      [input.name]: input.value,
+    });
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    if (state.title && state.author) {
+      // Calculate the maximum id number in booklist
+      let maxID = 0;
+      for (let i = 0; i < bookList.books.length; i += 1) {
+        if (bookList.books[i].id > maxID) {
+          maxID = bookList.books[i].id;
+        }
+      }
+
+      dispatch(
+        add({
+          id: maxID + 1,
+          title: state.title,
+          author: state.author,
+        }),
+      );
+    }
+  };
+
   return (
     <form onSubmit={submit}>
       <h2>Add a book</h2>
