@@ -1,3 +1,6 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+const axios = require('axios').default;
+
 // Action types
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
@@ -36,22 +39,15 @@ const booksReducer = (state = [], action) => {
 };
 
 /* eslint-disable array-callback-return */
-export const recieveBooks = () => async (dispatch) => {
-  await fetch(APIURL)
-    .then((res) => res.json())
-    .then((books) => {
-      const bookList = [];
-      Object.keys(books).map((key) => {
-        bookList.push({
-          item_id: key,
-          title: books[key][0].title,
-          author: books[key][0].author,
-          category: books[key][0].category,
-        });
-      });
-      dispatch(read(bookList));
-    });
-};
+
+export const recieveBooks = createAsyncThunk(
+  READ,
+  async () => {
+    const response = await axios.get(APIURL);
+    console.log(response.data)
+    return response.data;
+  },
+);
 
 export const sendBook = (book) => async (dispatch) => {
   await fetch(APIURL, {
