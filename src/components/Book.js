@@ -16,10 +16,10 @@ const Book = ({
 
   return (
     <div className="book font2">
-       <text className="category font1">{category}</text>
-       <h2 className="title">{title}</h2>
-       <h3 className="author">{author}</h3>
-       <button className="delete" type="button" onClick={deleteBook} value={id}>Delete</button>
+      <text className="category font1">{category}</text>
+      <h2 className="title">{title}</h2>
+      <h3 className="author">{author}</h3>
+      <button className="delete" type="button" onClick={deleteBook} value={id}>Delete</button>
     </div>
   );
 };

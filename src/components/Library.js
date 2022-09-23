@@ -10,13 +10,13 @@ const Library = (props) => {
     <div>
       {bookList.map((book) => (
         <Book
-           key={book.item_id}
-           title={book.title}
-           author={book.author}
-           id={book.item_id}
-           category={book.category}
-         />
-        ))}
+          key={book.item_id}
+          title={book.title}
+          author={book.author}
+          id={book.item_id}
+          category={book.category}
+        />
+      ))}
       <AddBook />
     </div>
   );
