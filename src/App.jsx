@@ -10,8 +10,9 @@ import { recieveBooks } from './redux/books/books';
 function App() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(() => async () => {
-    await dispatch(recieveBooks());
+
+  useEffect(() => {
+     dispatch(recieveBooks());
   }, []);
 
   return (
