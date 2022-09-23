@@ -32,24 +32,22 @@ const booksReducer =  (state = [], action) => {
     case `${REMOVE}/fulfilled`:
       return state.filter((book) => book.item_id !== action.payload);
     case `${READ}/fulfilled`:
-      return [...state, ...action.payload];
+      return action.payload;
     default:
       return state;
   }
 };
 /* eslint-disable array-callback-return */
-export const recieveBooks = () => (dispatch) => {
-  axios.get(APIURL).then((response) => {
-    const books = Object.keys(response.data).map((key) => {
-      const book = response.data[key][0];
-      return {
-        item_id: key,
-        ...book,
-      };
-    });
-    dispatch(read(books));
+export const recieveBooks = createAsyncThunk(READ,
+  async () => {
+    const res = await axios.get(APIURL);
+    const books = Object.keys(res.data).map((id) => ({
+      item_id: id,
+      ...res.data[id][0],
+    }));
+    return books;
+
   });
-};
 
 export const sendBook = (book) => async (dispatch) => {
   await fetch(APIURL, {
