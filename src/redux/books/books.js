@@ -49,18 +49,11 @@ export const recieveBooks = createAsyncThunk(READ,
 
   });
 
-export const sendBook = (book) => async (dispatch) => {
-  await fetch(APIURL, {
-    method: 'POST',
-    body: JSON.stringify(book),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then(() => {
-      dispatch(add(book));
-    });
-};
+export const sendBook = createAsyncThunk(ADD,
+  async (book) => {
+  await axios.post(APIURL, book);
+  return book;
+});
 
 export const removeBook = (id) => async (dispatch) => {
   await fetch(`${APIURL}/${id}`, {
