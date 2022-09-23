@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 // Action types
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
@@ -27,7 +25,7 @@ export const read = (books) => ({
 const booksReducer = (state = [], action) => {
   switch (action.type) {
     case READ:
-      return [...action.payload];
+      return action.payload;
     case ADD:
       return [...state, action.payload];
     case REMOVE:
@@ -38,17 +36,21 @@ const booksReducer = (state = [], action) => {
 };
 
 /* eslint-disable array-callback-return */
-export const recieveBooks = () => (dispatch) => {
-  axios.get(APIURL).then((response) => {     
-    const books = Object.keys(response.data).map((key) => {
-      const book = response.data[key][0];
-      return {
-        id: key,
-        ...book,
-      }
+export const recieveBooks = () => async (dispatch) => {
+  await fetch(APIURL)
+    .then((res) => res.json())
+    .then((books) => {
+      const bookList = [];
+      Object.keys(books).map((key) => {
+        bookList.push({
+          item_id: key,
+          title: books[key][0].title,
+          author: books[key][0].author,
+          category: books[key][0].category,
+        });
+      });
+      dispatch(read(bookList));
     });
-    dispatch(read(books));
-  })
 };
 
 export const sendBook = (book) => async (dispatch) => {
