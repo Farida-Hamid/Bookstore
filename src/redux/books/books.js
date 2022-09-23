@@ -25,7 +25,7 @@ export const read = (books) => ({
 });
 
 // Reducer
-const booksReducer =  (state = [], action) => {
+const booksReducer = (state = [], action) => {
   switch (action.type) {
     case `${ADD}/fulfilled`:
       return [...state, action.payload];
@@ -46,26 +46,18 @@ export const recieveBooks = createAsyncThunk(READ,
       ...res.data[id][0],
     }));
     return books;
-
   });
 
 export const sendBook = createAsyncThunk(ADD,
   async (book) => {
-  await axios.post(APIURL, book);
-  return book;
-});
+    await axios.post(APIURL, book);
+    return book;
+  });
 
-export const removeBook = (id) => async (dispatch) => {
-  await fetch(`${APIURL}/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then(() => {
-      dispatch(remove(id));
-    });
-};
-
+export const removeBook = createAsyncThunk(REMOVE,
+  async (id) => {
+    await axios.delete(`${APIURL}/${id}`);
+    return id;
+  });
 
 export default booksReducer;
