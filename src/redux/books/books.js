@@ -39,16 +39,16 @@ const booksReducer = (state = [], action) => {
 
 /* eslint-disable array-callback-return */
 export const recieveBooks = () => (dispatch) => {
-  axios.get(APIURL).then((response) => {     
+  axios.get(APIURL).then((response) => {
     const books = Object.keys(response.data).map((key) => {
       const book = response.data[key][0];
       return {
         item_id: key,
         ...book,
-      }
+      };
     });
     dispatch(read(books));
-  })
+  });
 };
 
 export const sendBook = (book) => async (dispatch) => {
