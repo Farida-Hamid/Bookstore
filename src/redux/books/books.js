@@ -1,6 +1,7 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Action types
+// // Action types
 const ADD = 'bookstore/books/ADD';
 const REMOVE = 'bookstore/books/REMOVE';
 const READ = 'bookstore/books/READ';
@@ -24,19 +25,18 @@ export const read = (books) => ({
 });
 
 // Reducer
-const booksReducer = (state = [], action) => {
+const booksReducer =  (state = [], action) => {
   switch (action.type) {
-    case READ:
-      return [...action.payload];
-    case ADD:
+    case `${ADD}/fulfilled`:
       return [...state, action.payload];
-    case REMOVE:
-      return [...state.filter((item) => item.item_id !== action.payload)];
+    case `${REMOVE}/fulfilled`:
+      return state.filter((book) => book.item_id !== action.payload);
+    case `${READ}/fulfilled`:
+      return [...state, ...action.payload];
     default:
       return state;
   }
 };
-
 /* eslint-disable array-callback-return */
 export const recieveBooks = () => (dispatch) => {
   axios.get(APIURL).then((response) => {
@@ -75,5 +75,6 @@ export const removeBook = (id) => async (dispatch) => {
       dispatch(remove(id));
     });
 };
+
 
 export default booksReducer;
