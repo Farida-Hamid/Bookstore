@@ -35,6 +35,8 @@ main {
   border: solid 1px #e8e8e8;
   padding: 2%;
   margin-bottom: 1%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
@@ -63,6 +65,16 @@ main {
   font-size: 0.875rem;
   font-weight: bold;
   color: #121212;
+}
+
+.separator {
+  height: 130px;
+  border-left: 3px solid #e8e8e8;
+}
+
+.line {
+  padding: 5px;
+  color: e8e8e8;
 }
 
 h3,
