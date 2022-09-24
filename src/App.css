@@ -1,7 +1,7 @@
 header {
   display: flex;
   align-items: baseline;
-  width: 30%;
+  width: 90%;
   justify-content: space-between;
   color: #0290ff;
   padding-left: 4%;
@@ -16,6 +16,16 @@ a {
 main {
   background: #e8e8e8;
   padding: 3%;
+
+}
+
+.container {
+  width: 30%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+
 }
 
 .gray {
