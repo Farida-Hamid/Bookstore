@@ -16,7 +16,6 @@ a {
 main {
   background: #e8e8e8;
   padding: 3%;
-
 }
 
 .container {
@@ -24,8 +23,6 @@ main {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-
-
 }
 
 .gray {
