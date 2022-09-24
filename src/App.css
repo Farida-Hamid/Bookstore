@@ -18,6 +18,10 @@ main {
   padding: 3%;
 }
 
+.gray {
+  color: #888;
+}
+
 .book {
   background: #fff;
   border-radius: 4px;

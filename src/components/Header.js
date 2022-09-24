@@ -6,7 +6,7 @@ const Header = () => (
     <h1>Library</h1>
     <nav>
       <Link to="/">BOOKS</Link>
-      <Link to="/categories">CATEGORIES</Link>
+      <Link className='gray' to="/categories">CATEGORIES</Link>
     </nav>
   </header>
 );
