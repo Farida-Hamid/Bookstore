@@ -19,7 +19,7 @@ const Book = ({
       <text className="category font1">{category}</text>
       <h2 className="title">{title}</h2>
       <h3 className="author">{author}</h3>
-      <button className="delete" type="button" onClick={deleteBook} value={id}>Delete</button>
+      <button className="delete" type="button" onClick={deleteBook} value={id}>Remove</button>
     </div>
   );
 };
