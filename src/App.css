@@ -21,6 +21,7 @@ main {
 .light {
   font-weight: lighter;
 }
+
 .container {
   width: 30%;
   display: flex;
