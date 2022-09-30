@@ -17,7 +17,7 @@ const Book = ({
 
   return (
     <div className="book font2">
-      <div>
+      <div className="info">
         <text className="category font1">{category}</text>
         <h2 className="title">{title}</h2>
         <h3 className="author">{author}</h3>
@@ -37,7 +37,7 @@ const Book = ({
       <div className="separator" />
       <div>
         <p className="gray">CURRENT CHAPTER</p>
-        <p>Chapter: 1</p>
+        <p>Chapter: 3</p>
         <button id="add" type="button">UPDATE PROGRESS</button>
       </div>
     </div>

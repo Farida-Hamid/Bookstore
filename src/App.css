@@ -39,6 +39,10 @@ main {
   justify-content: space-between;
 }
 
+.info {
+  width: 50%;
+}
+
 .title {
   font-size: 1.375rem;
   font-weight: bold;
